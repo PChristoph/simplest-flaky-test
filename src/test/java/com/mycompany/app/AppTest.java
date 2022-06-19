@@ -1,5 +1,7 @@
 package com.mycompany.app;
 
+import java.util.Random;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -28,11 +30,22 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
+    public void testAlwaysValid()
     {
         assertTrue( true );
+    }
+
+    public void testAlwaysInvalid()
+    {
+        assertTrue( false );
+    }
+
+    public void testFlaky()
+    {
+        int max = 4;
+        int min = 1;
+        Random random = new Random();
+        int rndNumber = random.nextInt(max - min + 1) + min;
+        assertTrue(rndNumber != 4);
     }
 }
