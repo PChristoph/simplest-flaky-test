@@ -1,38 +1,33 @@
 package com.mycompany.app;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertTrue;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
+import java.util.Random;
+
+import org.junit.Test;
+
+public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
+    @Test
+    public void testAlwaysValid()
     {
         assertTrue( true );
+    }
+
+    @Test
+    public void testAlwaysInvalid()
+    {
+        assertTrue( false );
+    }
+
+    @Test
+    public void testFlaky()
+    {
+        int max = 4;
+        int min = 1;
+        Random random = new Random();
+        int rndNumber = random.nextInt(max - min + 1) + min;
+        assertTrue(rndNumber != 4);
     }
 }
